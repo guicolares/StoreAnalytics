@@ -140,13 +140,37 @@
 			path = "parse-library-1-5";
 			sourceTree = "<group>";
 		};
+		BF9BD1CB1AFB9DCD0082B724 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		BF9BD1CC1AFB9DDB0082B724 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F10D8B061AFB984100314946 /* LaunchScreen.xib */,
+				F10D8B011AFB984100314946 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BF9BD1CD1AFB9DE00082B724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F10D8AEF1AFB984100314946 = {
 			isa = PBXGroup;
 			children = (
-				3C72EE1B1AFB99C800C804D9 /* Frameworks */,
 				F10D8AFA1AFB984100314946 /* StoreAnalytics */,
 				F10D8B101AFB984100314946 /* StoreAnalyticsTests */,
 				F10D8AF91AFB984100314946 /* Products */,
+				3C72EE1B1AFB99C800C804D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,10 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				F10D8AFD1AFB984100314946 /* AppDelegate.swift */,
-				F10D8B011AFB984100314946 /* Main.storyboard */,
 				F10D8B041AFB984100314946 /* Images.xcassets */,
-				F10D8B061AFB984100314946 /* LaunchScreen.xib */,
-				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
+				BF9BD1CD1AFB9DE00082B724 /* Model */,
+				BF9BD1CC1AFB9DDB0082B724 /* View */,
+				BF9BD1CB1AFB9DCD0082B724 /* Controller */,
 				F10D8AFB1AFB984100314946 /* Supporting Files */,
 			);
 			path = StoreAnalytics;
@@ -246,6 +270,7 @@
 				TargetAttributes = {
 					F10D8AF71AFB984100314946 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 4NRYRR94WS;
 					};
 					F10D8B0C1AFB984100314946 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -427,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1-5",
@@ -434,6 +460,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a1a48d11-8359-438d-adde-75c895185206";
 			};
 			name = Debug;
 		};
@@ -441,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1-5",
@@ -448,6 +476,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "408ce395-131e-4593-ab10-4c64644c87b0";
 			};
 			name = Release;
 		};
