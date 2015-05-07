@@ -30,6 +30,7 @@
 		F10D8B051AFB984100314946 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B041AFB984100314946 /* Images.xcassets */; };
 		F10D8B081AFB984100314946 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B061AFB984100314946 /* LaunchScreen.xib */; };
 		F10D8B141AFB984100314946 /* StoreAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10D8B131AFB984100314946 /* StoreAnalyticsTests.swift */; };
+		F1B26DED1AFB9F62005F695F /* BeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B26DEC1AFB9F62005F695F /* BeaconViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		F10D8B0D1AFB984100314946 /* StoreAnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAnalyticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10D8B121AFB984100314946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F10D8B131AFB984100314946 /* StoreAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAnalyticsTests.swift; sourceTree = "<group>"; };
+		F1B26DEC1AFB9F62005F695F /* BeaconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				F10D8B061AFB984100314946 /* LaunchScreen.xib */,
 				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
 				F10D8AFB1AFB984100314946 /* Supporting Files */,
+				F1B26DEC1AFB9F62005F695F /* BeaconViewController.swift */,
 			);
 			path = StoreAnalytics;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF9BD1CA1AFB9D640082B724 /* LocationViewController.swift in Sources */,
+				F1B26DED1AFB9F62005F695F /* BeaconViewController.swift in Sources */,
 				F10D8AFE1AFB984100314946 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
