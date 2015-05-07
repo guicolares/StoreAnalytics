@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qCu-5p-NzQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Location View Controller-->
+        <!--Push-->
+        <scene sceneID="dnA-jq-Izq">
+            <objects>
+                <viewController id="DXv-vQ-2Vc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q9o-1J-8GC"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Ut-PY-IlK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kJ0-eW-IRK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Push" id="h7g-MJ-dPt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byx-Sz-hO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="-81"/>
+        </scene>
+        <!--Beacon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LocationViewController" customModule="StoreAnalytics" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,9 +36,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Beacon" id="tj5-xD-Oju"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1832" y="644"/>
+        </scene>
+        <!--InApp-->
+        <scene sceneID="iJV-IA-fLF">
+            <objects>
+                <viewController id="rnN-cH-neu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bWl-K2-GPg"/>
+                        <viewControllerLayoutGuide type="bottom" id="hra-Y3-2sy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sy5-D4-aHn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="InApp" id="Y1k-Xx-taL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3P-fX-GyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="1391"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hLy-pz-W5P">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qCu-5p-NzQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xxq-4p-oI7">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="huk-gF-T6a"/>
+                        <segue destination="rnN-cH-neu" kind="relationship" relationship="viewControllers" id="Veh-Wi-Xd3"/>
+                        <segue destination="DXv-vQ-2Vc" kind="relationship" relationship="viewControllers" id="EBd-cI-3m1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rA-mf-Ysq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="644"/>
         </scene>
     </scenes>
 </document>
