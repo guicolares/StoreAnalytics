@@ -24,8 +24,8 @@
 		3C72EE3C1AFB9ADD00C804D9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72EE311AFB9ADD00C804D9 /* Security.framework */; };
 		3C72EE3D1AFB9ADD00C804D9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72EE321AFB9ADD00C804D9 /* StoreKit.framework */; };
 		3C72EE3E1AFB9ADD00C804D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C72EE331AFB9ADD00C804D9 /* SystemConfiguration.framework */; };
+		BF9BD1CA1AFB9D640082B724 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */; };
 		F10D8AFE1AFB984100314946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10D8AFD1AFB984100314946 /* AppDelegate.swift */; };
-		F10D8B001AFB984100314946 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10D8AFF1AFB984100314946 /* ViewController.swift */; };
 		F10D8B031AFB984100314946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B011AFB984100314946 /* Main.storyboard */; };
 		F10D8B051AFB984100314946 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B041AFB984100314946 /* Images.xcassets */; };
 		F10D8B081AFB984100314946 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B061AFB984100314946 /* LaunchScreen.xib */; };
@@ -60,10 +60,10 @@
 		3C72EE311AFB9ADD00C804D9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3C72EE321AFB9ADD00C804D9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3C72EE331AFB9ADD00C804D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		F10D8AF81AFB984100314946 /* StoreAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10D8AFC1AFB984100314946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F10D8AFD1AFB984100314946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F10D8AFF1AFB984100314946 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F10D8B021AFB984100314946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F10D8B041AFB984100314946 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F10D8B071AFB984100314946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -163,10 +163,10 @@
 			isa = PBXGroup;
 			children = (
 				F10D8AFD1AFB984100314946 /* AppDelegate.swift */,
-				F10D8AFF1AFB984100314946 /* ViewController.swift */,
 				F10D8B011AFB984100314946 /* Main.storyboard */,
 				F10D8B041AFB984100314946 /* Images.xcassets */,
 				F10D8B061AFB984100314946 /* LaunchScreen.xib */,
+				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
 				F10D8AFB1AFB984100314946 /* Supporting Files */,
 			);
 			path = StoreAnalytics;
@@ -297,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F10D8B001AFB984100314946 /* ViewController.swift in Sources */,
+				BF9BD1CA1AFB9D640082B724 /* LocationViewController.swift in Sources */,
 				F10D8AFE1AFB984100314946 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
