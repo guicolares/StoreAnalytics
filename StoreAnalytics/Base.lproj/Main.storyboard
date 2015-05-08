@@ -45,7 +45,7 @@
         <!--InApp-->
         <scene sceneID="iJV-IA-fLF">
             <objects>
-                <viewController id="rnN-cH-neu" sceneMemberID="viewController">
+                <viewController id="rnN-cH-neu" customClass="InAppViewController" customModule="StoreAnalytics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bWl-K2-GPg"/>
                         <viewControllerLayoutGuide type="bottom" id="hra-Y3-2sy"/>
