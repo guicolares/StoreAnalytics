@@ -145,6 +145,7 @@
 		BF9BD1CB1AFB9DCD0082B724 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F1B26DEC1AFB9F62005F695F /* BeaconViewController.swift */,
 				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
 			);
 			name = Controller;
@@ -194,7 +195,6 @@
 				BF9BD1CC1AFB9DDB0082B724 /* View */,
 				BF9BD1CB1AFB9DCD0082B724 /* Controller */,
 				F10D8AFB1AFB984100314946 /* Supporting Files */,
-				F1B26DEC1AFB9F62005F695F /* BeaconViewController.swift */,
 			);
 			path = StoreAnalytics;
 			sourceTree = "<group>";
@@ -273,6 +273,15 @@
 				TargetAttributes = {
 					F10D8AF71AFB984100314946 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 2G52X8JVF4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					F10D8B0C1AFB984100314946 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -456,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1-5",
@@ -463,7 +473,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a1a48d11-8359-438d-adde-75c895185206";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -472,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1-5",
@@ -479,7 +490,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "408ce395-131e-4593-ab10-4c64644c87b0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
