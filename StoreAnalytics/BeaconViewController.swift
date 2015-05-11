@@ -2,9 +2,9 @@ import UIKit
 import CoreLocation
 import Parse
 
-let uuid = NSUUID(UUIDString: "A3D35CE7-048E-4749-A9EB-5D651191666B")
-//"A3D35CE7-048E-4749-A9EB-5D651191666B  2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6 "
-let identifier = "beacon.identifier"
+//let uuid = NSUUID(UUIDString: "A3D35CE7-048E-4749-A9EB-5D651191666B")
+////"A3D35CE7-048E-4749-A9EB-5D651191666B  2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6 "
+//let identifier = "beacon.identifier"
 
 class BeaconViewController: UIViewController, CLLocationManagerDelegate {
     

@@ -178,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="1832" y="644"/>
         </scene>
-        <!--View Controller-->
+        <!--Ticket View Controller-->
         <scene sceneID="YNr-vN-Ddx">
             <objects>
-                <viewController id="cFw-Jw-200" sceneMemberID="viewController">
+                <viewController id="cFw-Jw-200" customClass="TicketViewController" customModule="StoreAnalytics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="adO-SV-hI8"/>
                         <viewControllerLayoutGuide type="bottom" id="l0G-3y-19n"/>
@@ -233,6 +233,22 @@
                                     <segue destination="rnN-cH-neu" kind="presentation" id="fjn-XL-NeX"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqP-Lt-Mkv">
+                                <rect key="frame" x="230" y="259" width="140" height="140"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="1jx-or-0eS"/>
+                                    <constraint firstAttribute="height" constant="140" id="zvQ-ei-Kd6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Chamar próximo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="callNext:" destination="cFw-Jw-200" eventType="touchUpInside" id="WsW-N7-dLp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -241,6 +257,7 @@
                             <constraint firstItem="l0G-3y-19n" firstAttribute="top" secondItem="rj5-kv-6I7" secondAttribute="bottom" constant="32" id="7vx-9m-o95"/>
                             <constraint firstItem="69Q-lk-TR0" firstAttribute="centerX" secondItem="rj5-kv-6I7" secondAttribute="centerX" id="8Kb-nK-r71"/>
                             <constraint firstItem="Nqe-y6-2Sd" firstAttribute="top" secondItem="r5Z-eR-Yi0" secondAttribute="bottom" constant="68" id="F29-Uj-CoW"/>
+                            <constraint firstItem="oqP-Lt-Mkv" firstAttribute="top" secondItem="DDA-2Z-2k1" secondAttribute="bottom" constant="8" id="HKa-P0-5Bp"/>
                             <constraint firstItem="KvW-j4-uFT" firstAttribute="top" secondItem="r5Z-eR-Yi0" secondAttribute="bottom" constant="66" id="RSy-BW-F3q"/>
                             <constraint firstItem="KvW-j4-uFT" firstAttribute="centerX" secondItem="7Da-OI-jr7" secondAttribute="centerX" id="asA-SN-UwJ"/>
                             <constraint firstItem="Nqe-y6-2Sd" firstAttribute="leading" secondItem="5yQ-rf-b5h" secondAttribute="leadingMargin" constant="57" id="bRJ-Ax-dP4"/>
@@ -248,10 +265,17 @@
                             <constraint firstItem="r5Z-eR-Yi0" firstAttribute="top" secondItem="adO-SV-hI8" secondAttribute="bottom" constant="32" id="iqQ-JJ-piw"/>
                             <constraint firstAttribute="centerX" secondItem="rj5-kv-6I7" secondAttribute="centerX" id="jRw-Cj-yNb"/>
                             <constraint firstItem="7Da-OI-jr7" firstAttribute="top" secondItem="KvW-j4-uFT" secondAttribute="bottom" constant="16" id="kgv-sA-PWa"/>
+                            <constraint firstAttribute="centerX" secondItem="oqP-Lt-Mkv" secondAttribute="centerX" id="lTB-EW-fer"/>
                             <constraint firstItem="rj5-kv-6I7" firstAttribute="top" secondItem="69Q-lk-TR0" secondAttribute="bottom" constant="8" id="ofU-LA-WOf"/>
                             <constraint firstItem="DDA-2Z-2k1" firstAttribute="top" secondItem="Nqe-y6-2Sd" secondAttribute="bottom" constant="16" id="xxR-Rc-1P8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="oqP-Lt-Mkv" id="Iyk-Ki-GVK"/>
+                        <outlet property="tickeatCurrent" destination="7Da-OI-jr7" id="n2i-bG-rx5"/>
+                        <outlet property="ticketCountText" destination="Nqe-y6-2Sd" id="lVz-eh-5jj"/>
+                        <outlet property="ticketNumber" destination="DDA-2Z-2k1" id="ZW3-0F-Usy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tg-C2-TL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
