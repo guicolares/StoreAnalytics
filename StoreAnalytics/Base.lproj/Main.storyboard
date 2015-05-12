@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -119,19 +119,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procurando locais.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXG-X3-tUe">
-                                <rect key="frame" x="217" y="208" width="167" height="24"/>
+                                <rect key="frame" x="217" y="288" width="167" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encontramos uma fila na Lojas Renner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIq-Xe-sd7">
-                                <rect key="frame" x="159" y="240" width="283" height="21"/>
+                                <rect key="frame" x="159" y="320" width="283" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeK-q6-Liw">
-                                <rect key="frame" x="231" y="302" width="140" height="140"/>
+                                <rect key="frame" x="231" y="382" width="140" height="140"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="DJD-Fr-Gkx"/>
@@ -147,7 +147,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ev-YU-H0S">
-                                <rect key="frame" x="237" y="450" width="129" height="30"/>
+                                <rect key="frame" x="237" y="570" width="129" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Entrar como admin">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,14 +164,23 @@
                             <constraint firstItem="WeK-q6-Liw" firstAttribute="top" secondItem="bIq-Xe-sd7" secondAttribute="bottom" constant="41" id="PzY-YQ-ihE"/>
                             <constraint firstItem="bIq-Xe-sd7" firstAttribute="centerX" secondItem="FXG-X3-tUe" secondAttribute="centerX" id="RSp-hT-XZZ"/>
                             <constraint firstItem="bIq-Xe-sd7" firstAttribute="top" secondItem="FXG-X3-tUe" secondAttribute="bottom" constant="8" id="eyJ-my-HuA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3ev-YU-H0S" secondAttribute="bottom" id="g9e-zd-6gc"/>
                             <constraint firstItem="3ev-YU-H0S" firstAttribute="top" secondItem="WeK-q6-Liw" secondAttribute="bottom" constant="8" id="olM-F9-DFo"/>
-                            <constraint firstAttribute="centerY" secondItem="FXG-X3-tUe" secondAttribute="centerY" constant="80" id="p68-52-Tj1"/>
+                            <constraint firstAttribute="centerY" secondItem="FXG-X3-tUe" secondAttribute="centerY" id="p68-52-Tj1"/>
                             <constraint firstItem="WeK-q6-Liw" firstAttribute="centerX" secondItem="bIq-Xe-sd7" secondAttribute="centerX" id="psg-hf-bfk"/>
                             <constraint firstItem="3ev-YU-H0S" firstAttribute="centerX" secondItem="WeK-q6-Liw" secondAttribute="centerX" id="tiZ-uS-ZUa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="olM-F9-DFo"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Beacon" id="tj5-xD-Oju"/>
                     <connections>
+                        <outlet property="constY" destination="p68-52-Tj1" id="DzV-gy-cYw"/>
+                        <outlet property="lblDescriptionPlace" destination="bIq-Xe-sd7" id="w5Z-kq-OVb"/>
+                        <outlet property="lblSearching" destination="FXG-X3-tUe" id="Ecp-pY-fnj"/>
                         <outlet property="ticketButton" destination="WeK-q6-Liw" id="9mL-70-vwQ"/>
                         <segue destination="cFw-Jw-200" kind="show" identifier="newTicket" id="BC7-Hy-y3z"/>
                     </connections>
