@@ -17,7 +17,9 @@ let identifier = "Radius"
 class SearchViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var ticketButton: UIButton!
+    @IBOutlet var constY: NSLayoutConstraint!
     
+    @IBOutlet var lblSearching: UILabel!
     @IBOutlet var lblDescriptionPlace: UILabel!
     var beaconsFound: [CLBeacon] = [CLBeacon]()
     let locationManager = CLLocationManager()
@@ -29,20 +31,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.findBeacon("A3D35CE7-048E-4749-A9EB-5D651191666B") // todo just for test
         ticketButton.layer.cornerRadius = ticketButton.frame.size.width / 2;
         ticketButton.clipsToBounds = true;
-        
-        self.lblDescriptionPlace.hidden = true
-        self.ticketButton.setTitle("Pesquisando...", forState: UIControlState.Normal)
-        UIView.animateWithDuration(1,
-            delay: 1.5,
-            options: UIViewAnimationOptions.Repeat|UIViewAnimationOptions.Autoreverse|UIViewAnimationOptions.CurveEaseInOut ,
-            animations: {
-                self.ticketButton.alpha = 0.0
-            }, completion:(nil))
-        
-       
+        self.ticketButton.layer.opacity = 0
+        self.lblDescriptionPlace.layer.opacity = 0
     }
     
     @IBAction func newTicket(sender: AnyObject) {
@@ -62,9 +54,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 self.queueFound.saveInBackgroundWithBlock(nil)
                 self.performSegueWithIdentifier("newTicket", sender: nextRecordId)
             }
-        
         }
-
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -109,7 +99,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
         if (beacons.count > 0) {
-            //beaconsFound = beacons as! [CLBeacon]
             self.findBeacon((beacons as! [CLBeacon]).first!.proximityUUID.UUIDString)
         }
     }
@@ -127,6 +116,20 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 if queuesAux!.count > 0 {
                    //send notification ??
                     self.queueFound = queuesAux?.firstObject as? PFObject
+                    
+                    UIView.animateWithDuration(0.8,
+                        delay: 0.0,
+                        options: UIViewAnimationOptions.AllowUserInteraction,
+                        animations: {
+                            self.constY.constant = 80
+                            self.ticketButton.layer.opacity = 1
+                            self.lblDescriptionPlace.layer.opacity = 1
+                            self.lblSearching.hidden = true
+                            
+                            self.view.layoutIfNeeded()
+                        }, completion: { (finished: Bool) in
+                            
+                    })
                     self.locationManager.stopRangingBeaconsInRegion(self.beaconRegion)
                 }
             })
@@ -155,30 +158,5 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             ticketView.admin = 0
             
         }
-    }
-   
-    func animateButton(){ //not working yet
-        self.ticketButton.layer.removeAllAnimations()
-        self.ticketButton.alpha = 100
-        self.lblDescriptionPlace.hidden = false
-       
-        
-        UIView.animateWithDuration(0.72,
-            delay: 0.50,
-            usingSpringWithDamping: 0.62,
-            initialSpringVelocity: 0.38,
-            options: UIViewAnimationOptions.CurveLinear,
-            animations: {
-                self.ticketButton?.frame = CGRectMake(120, 310, self.ticketButton.frame.size.width, self.ticketButton.frame.size.height)
-            }, completion: { (finished: Bool) in
-                //UIView.setAnimationsEnabled(false)
-                //self.ticketButton.setTitle("Retirar Ficha", forState: UIControlState.Normal)
-                //UIView.setAnimationsEnabled(true)
-              //  self.ticketButton.layoutIfNeeded()
-        })
-    }
-    
-    @IBAction func testAnimate(sender: AnyObject) {
-        self.animateButton()
     }
 }
