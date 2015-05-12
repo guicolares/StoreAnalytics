@@ -32,6 +32,10 @@ class LoginViewController: UIViewController {
         })
     }
 
+    @IBAction func closeLogin(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "loginAdmin") {
             var ticketControl = segue.destinationViewController as! TicketViewController

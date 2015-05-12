@@ -131,7 +131,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                         delay: 0.0,
                         options: UIViewAnimationOptions.AllowUserInteraction,
                         animations: {
-                            self.constY.constant = 80
+                            self.constY.constant = 100
                             self.ticketButton.layer.opacity = 1
                             self.lblDescriptionPlace.layer.opacity = 1
                             self.lblSearching.hidden = true
