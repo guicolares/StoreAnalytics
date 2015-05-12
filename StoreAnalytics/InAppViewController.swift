@@ -12,40 +12,39 @@ import StoreKit
 class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     var list = [SKProduct]()
-    var p = SKProduct()
+    var prod = SKProduct()
     @IBOutlet weak var removeButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         removeButton.enabled = false
-//
-//        let productsRequest = SKProductsRequest(productIdentifiers: [""])
-//        productsRequest.delegate = self;
-//        productsRequest.start();
         
         if(SKPaymentQueue.canMakePayments()) {
-            println("IAP is enabled, loading")
             var productID:NSSet = NSSet(object: "com.bepid.StoreAnalytics.RemoveAds")
             var request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject>)
             request.delegate = self
             request.start()
         } else {
-            println("please enable IAPS")
+            println("IAP not enable")
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func closeView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func removeAds(sender: AnyObject) {
-        println("button remove")
+        UserDefaultsManager.removeAdwords = 1
+
         for product in list {
             var prodID = product.productIdentifier
             if(prodID == "com.bepid.StoreAnalytics.RemoveAds") {
-                p = product
+                prod = product
                 buyProduct()
                 break;
             }
@@ -58,8 +57,8 @@ class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymen
     }
     
     func buyProduct() {
-        println("buy " + p.productIdentifier)
-        var pay = SKPayment(product: p)
+        println("buy " + prod.productIdentifier)
+        var pay = SKPayment(product: prod)
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         SKPaymentQueue.defaultQueue().addPayment(pay as SKPayment)
     }
@@ -82,8 +81,6 @@ class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymen
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
-        println("transactions restored")
-        
         var purchasedItemIDS = []
         for transaction in queue.transactions {
             var t: SKPaymentTransaction = transaction as! SKPaymentTransaction
@@ -93,7 +90,7 @@ class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymen
             switch prodID {
             case "com.bepid.StoreAnalytics.RemoveAds":
                 println("remove ads")
-//                self.performSegueWithIdentifier("teste", sender: nil)
+                UserDefaultsManager.removeAdwords = 1
             default:
                 println("IAP not setup")
             }
@@ -108,49 +105,34 @@ class InAppViewController: UIViewController, SKProductsRequestDelegate, SKPaymen
             println(trans.error)
             
             switch trans.transactionState {
-                
-            case .Purchased:
-                println("buy, ok unlock iap here")
-                println(p.productIdentifier)
-                
-                let prodID = p.productIdentifier as String
+                case .Purchased:
+                    let prodID = prod.productIdentifier as String
+
                 switch prodID {
-                case "com.bepid.StoreAnalytics.RemoveAds":
-                    println("remove ads")
-//                    self.performSegueWithIdentifier("teste", sender: nil)
-                default:
-                    println("IAP not setup")
+                    case "com.bepid.StoreAnalytics.RemoveAds":
+                        UserDefaultsManager.removeAdwords = 1
+                    default:
+                        println("IAP not setup")
                 }
-                
-                queue.finishTransaction(trans)
-                break;
-            case .Failed:
-                println("buy error")
-                queue.finishTransaction(trans)
-                break;
-            default:
-                println("default")
-                break;
-                
-            }
+                    queue.finishTransaction(trans)
+                    break;
+                case .Failed:
+                    println("error")
+                    queue.finishTransaction(trans)
+                    break;
+                default:
+                    println("default")
+                    break;
+                    
+                }
         }
     }
     
     func finishTransaction(trans:SKPaymentTransaction) {
-        println("finish trans")
+        println("finish")
     }
     func paymentQueue(queue: SKPaymentQueue!, removedTransactions transactions: [AnyObject]!) {
         println("remove trans");
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -204,8 +204,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDA-2Z-2k1">
-                                <rect key="frame" x="86" y="174" width="37" height="77"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDA-2Z-2k1">
+                                <rect key="frame" x="92" y="174" width="26" height="77"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="66"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -222,10 +222,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="renner" translatesAutoresizingMaskIntoConstraints="NO" id="rj5-kv-6I7">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="renner" translatesAutoresizingMaskIntoConstraints="NO" id="rj5-kv-6I7">
                                 <rect key="frame" x="175" y="488" width="250" height="80"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69Q-lk-TR0">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69Q-lk-TR0">
                                 <rect key="frame" x="245" y="450" width="111" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Retirar Anuncios">
@@ -273,7 +273,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="adsBanner" destination="rj5-kv-6I7" id="QSH-l3-5bM"/>
                         <outlet property="nextButton" destination="oqP-Lt-Mkv" id="Iyk-Ki-GVK"/>
+                        <outlet property="removeAdsButton" destination="69Q-lk-TR0" id="mLB-37-v3v"/>
                         <outlet property="tickeatCurrent" destination="7Da-OI-jr7" id="n2i-bG-rx5"/>
                         <outlet property="ticketCountText" destination="Nqe-y6-2Sd" id="lVz-eh-5jj"/>
                         <outlet property="ticketNumber" destination="DDA-2Z-2k1" id="ZW3-0F-Usy"/>
@@ -328,7 +330,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Retirar Anuncios" id="OR7-Pv-wkV">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="Onc-FI-YDl"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Fechar" id="Onc-FI-YDl">
+                                            <connections>
+                                                <action selector="closeView:" destination="rnN-cH-neu" id="DdC-PQ-4fy"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
