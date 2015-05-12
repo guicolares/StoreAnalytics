@@ -15,6 +15,8 @@ class TicketViewController: UIViewController {
     @IBOutlet weak var ticketNumber: UILabel!
     @IBOutlet weak var tickeatCurrent: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var removeAdsButton: UIButton!
+    @IBOutlet weak var adsBanner: UIImageView!
 
     var ticketNumberReceived : Int = 0
     var lastRecord:PFObject!
@@ -36,9 +38,18 @@ class TicketViewController: UIViewController {
         }else{
             self.ticketNumber.text = "\(ticketNumberReceived)"
         }
-        
+
         self.getCurrentTicket()
         NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "getCurrentTicket", userInfo: nil, repeats: true)
+    }
+    override func viewWillAppear(animated: Bool) {
+        if UserDefaultsManager.removeAdwords == nil {
+            removeAdsButton.hidden = false
+            adsBanner.hidden = false
+        } else {
+            removeAdsButton.hidden = true
+            adsBanner.hidden = true
+        }
     }
     
     func getLastTicketCreated(){
@@ -58,7 +69,7 @@ class TicketViewController: UIViewController {
     
     @IBAction func callNext(sender: UIButton) {
         var nextRecordCall:Int = (self.inQueue["lastRecordCalled"] as! Int) + 1
-        
+
         var query = PFQuery(className:"record").whereKey("recordId", equalTo: nextRecordCall)
         
         query.findObjectsInBackgroundWithBlock {
