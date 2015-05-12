@@ -114,7 +114,17 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 var queuesAux:NSArray? = queues as? [PFObject]
                 
                 if queuesAux!.count > 0 {
-                   //send notification ??
+                    
+                    
+                    var localNotification:UILocalNotification = UILocalNotification()
+                    localNotification.alertAction = "Testing notifications on iOS8"
+                    localNotification.alertBody = "Entre na fila!"
+                    //localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+                    localNotification.soundName = UILocalNotificationDefaultSoundName
+                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                    
+                    
+                    
                     self.queueFound = queuesAux?.firstObject as? PFObject
                     
                     UIView.animateWithDuration(0.8,

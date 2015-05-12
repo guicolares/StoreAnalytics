@@ -285,7 +285,7 @@
 				TargetAttributes = {
 					F10D8AF71AFB984100314946 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 4NRYRR94WS;
+						DevelopmentTeam = 6UBGL9DWPC;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -489,7 +489,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a1a48d11-8359-438d-adde-75c895185206";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -506,7 +506,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "408ce395-131e-4593-ab10-4c64644c87b0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
