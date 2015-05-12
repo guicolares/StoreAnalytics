@@ -30,23 +30,90 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
+        
         ticketButton.layer.cornerRadius = ticketButton.frame.size.width / 2;
         ticketButton.clipsToBounds = true;
     }
 
     @IBAction func newTicket(sender: AnyObject) {
+
+        var installation: AnyObject = PFInstallation.currentInstallation()["installationId"]!
+        var prox : Int = 0
+       
+        var query = PFQuery(className:"queue")
+        //println(query)
         
-        self.inQueue = self.queueFound
-        var queue:PFObject! = self.queueFound
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+         
+            if error == nil {
+                // The find succeeded.
+                
+                println("Successfully retrieved \(objects!.count) queue.")
+
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        
+                        self.queueFound = object
+                        
+                        prox = (object["lastRecordCreated"] as! Int) + 1
+                        
+                        var record = PFObject(className: "record")
+                        
+                        record["userTokenTemp"] = installation
+                        
+                        record["recordId"] =  prox
+                            
+                        record["queue"] = object
+                        
+                        record.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+                            
+                            if success {
+                                
+                                self.queueFound["lastRecordCreated"] = (self.queueFound["lastRecordCreated"] as! Int) + 1
+                                
+                            //    self.queueFound["lastRecordCalled"] = (self.queueFound["lastRecordCalled"] as! Int) + 1
+                              
+                                
+                                self.queueFound.saveInBackgroundWithBlock(nil)
+                                
+                               
+                               self.performSegueWithIdentifier("newTicket", sender: self.queueFound["lastRecordCreated"])
+                                
+                            }
+                            
+                        }
+                        
+                        
+                        
+                    }
+                    
+                }
+                
+            } else {
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+       /*
         //generate code
         var nextRecordId:Int = queue["lastRecordCreated"] as! Int + 1
         
         //save record with token
         var record = PFObject(className: "record")
         record["userTokenTemp"] = "2321312321"
-        record["recordId"] = nextRecordId
-        record["queue"] = queue
+        record["recordId"] = nextRecordId //pega o prox numero da fila
+    //    record["queue"] = queue
+        
         record.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             if success {
                 //update queue
@@ -55,10 +122,15 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 //                self.lblMessage.text = "Sua senha: \(nextRecordId)"
                 self.performSegueWithIdentifier("newTicket", sender: sender)
             }
-        }
+        }*/
 
     }
 
+
+    
+    
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
@@ -124,14 +196,24 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "newTicket"){
+            
+            let ticketView: TicketViewController = segue.destinationViewController as! TicketViewController
+            
+            ticketView.ticketNumberReceived = sender! as! Int
+            ticketView.admin = 0
+            
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

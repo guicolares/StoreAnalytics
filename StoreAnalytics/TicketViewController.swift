@@ -16,31 +16,81 @@ class TicketViewController: UIViewController {
     @IBOutlet weak var tickeatCurrent: UILabel!
     @IBOutlet weak var nextButton: UIButton!
 
+    var ticketNumberReceived : Int = 0
     var lastRecord:PFObject!
     var inQueue:PFObject!
     var queueFound:PFObject!
-    var admin: Int!
+    var admin: Int! 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println(self.admin)
-
+      //  let teste: (AnyObject) = (self.queueFound["lastRecordCalled"]!)
+  
+ //       self.tickeatCurrent.text = "\(teste)"
+        
+        getCurrent()
+        println(self.queueFound)
+        
+        
         if(self.admin == 1) {
             self.ticketCountText.text = "Ultima ficha"
             self.nextButton.hidden = false
             self.nextButton.layer.cornerRadius = self.nextButton.frame.size.width / 2;
             self.nextButton.clipsToBounds = true;
         }
+        
+        else{
+            self.ticketNumber.text = "\(ticketNumberReceived)"
+        }
     }
 
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func callNext(sender: UIButton) {
-        let nextRecordIdCall:Int = self.queueFound["lastRecordCalled"] as! Int + 1
+        
+        //ticketcurrent + 1
+        //atualiza queue
+        
+        
+        var query = PFQuery(className:"queue")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                
+                println("Successfully retrieved \(objects!.count) queue.")
+                
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        
+                        self.queueFound = object
+                        
+                        self.queueFound["lastRecordCalled"] = (self.queueFound["lastRecordCalled"] as! Int) + 1
+                        let teste = (self.queueFound["lastRecordCalled"]!)
+                        self.tickeatCurrent.text = "\(teste)"
+                        self.queueFound.saveInBackgroundWithBlock(nil)
+                        
+                        
+                    }
+                }
+            }
+
+        /*
+                        
+        
+        
+        
+        
+        let nextRecordIdCall:Int = (self.queueFound["lastRecordCalled"] as! Int) + 1
         //get record
         var record = PFQuery(className: "record")
         record.whereKey("recordId", equalTo: nextRecordIdCall)
@@ -57,7 +107,35 @@ class TicketViewController: UIViewController {
         }else{
             //send message this record is the last
         }
+        */
+        }
     }
+    
+    
+    func getCurrent(){
+        var query = PFQuery(className:"queue")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                
+              //  println("Successfully retrieved \(objects!.count) queue.")
+                
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        
+                        self.queueFound = object
+                      //  println(self.queueFound)
+                    }
+                }
+            }
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -69,3 +147,4 @@ class TicketViewController: UIViewController {
     */
 
 }
+    }}

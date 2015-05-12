@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("Czk8Fc89mPK31utkoPI7Ws1nafBG1M9nlvb7Am9d",
             clientKey: "DIo5I1WJDwkaqJtbbKluA4pTUlUWHK8sghkAcApi")
         
+      
+        
         
         //
         // MARK : PUSH
@@ -55,6 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        let installation = PFInstallation.currentInstallation()
+        //installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        
         //
         //
         //
@@ -68,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
+        println("entrei")
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
