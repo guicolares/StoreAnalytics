@@ -84,6 +84,17 @@ class TicketViewController: UIViewController {
                         self.inQueue.saveInBackgroundWithBlock(nil)
                         self.getCurrentTicket()
                         //send notification ??
+                        
+                        let pushQuery = PFInstallation.query()
+                        
+                        // tem que pegar o userTokenTemp e por no EQUAL TO =]
+                        pushQuery!.whereKey("installationId", equalTo: "2e94d29f-d7eb-4961-9865-e0b9c4ea8a43")
+                        
+                        // Send push notification to query
+                        let push = PFPush()
+                        push.setQuery(pushQuery) // Set our Installation query
+                        push.setMessage("teste push parse")
+                        push.sendPushInBackground()
                     }
                 }
                 println(objects)
