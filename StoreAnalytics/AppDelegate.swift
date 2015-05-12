@@ -21,13 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("Czk8Fc89mPK31utkoPI7Ws1nafBG1M9nlvb7Am9d",
             clientKey: "DIo5I1WJDwkaqJtbbKluA4pTUlUWHK8sghkAcApi")
         
-      
-        
-        
-        //
-        // MARK : PUSH
-        //
-        
         // Register for Push Notitications
         if application.applicationState != UIApplicationState.Background {
             // Track an app open here if we launch with a push, unless
@@ -44,26 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        } else {
-            let types = UIRemoteNotificationType.Badge |
-                UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-            application.registerForRemoteNotificationTypes(types)
-        }
-        
-        
-        
-        let installation = PFInstallation.currentInstallation()
-        //installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
-        
-        //
-        //
-        //
+        let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -74,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
-        println("entrei")
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -91,9 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }
     }
-    
-    
-    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
