@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
@@ -23,7 +24,16 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func loginAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("loginAdmin", sender: sender)
+        var query = PFQuery(className: "queue")
+        query.whereKey("UUID", equalTo: "A3D35CE7-048E-4749-A9EB-5D651191666B")
+        query.findObjectsInBackgroundWithBlock({(queues , error)  in
+            //get only one beacon found ?
+            if let queuesAux = queues as? [PFObject] {
+                self.performSegueWithIdentifier("loginAdmin", sender: queuesAux[0])
+            }
+        })
+        
+        
     }
     // MARK: - Navigation
 
@@ -32,6 +42,10 @@ class LoginViewController: UIViewController {
         if(segue.identifier == "loginAdmin") {
             var ticketControl = segue.destinationViewController as! TicketViewController
             ticketControl.admin = 1
+            ticketControl.inQueue = sender as! PFObject
+            
+            
+           
         }
     }
 }

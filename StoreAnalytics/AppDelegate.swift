@@ -17,13 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Parse.enableLocalDatastore()
         
-        // Initialize Parse.
         Parse.setApplicationId("Czk8Fc89mPK31utkoPI7Ws1nafBG1M9nlvb7Am9d",
             clientKey: "DIo5I1WJDwkaqJtbbKluA4pTUlUWHK8sghkAcApi")
         
-        // [Optional] Track statistics around application opens.
+      
+        
         
         //
         // MARK : PUSH
@@ -58,6 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        let installation = PFInstallation.currentInstallation()
+        //installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        
         //
         //
         //
@@ -71,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
+        println("entrei")
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -112,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     
     
 }

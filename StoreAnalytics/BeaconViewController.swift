@@ -73,6 +73,22 @@ class BeaconViewController: UIViewController, CLLocationManagerDelegate {
                 if let queuesAux = queues as? [PFObject] {
                     self.queueFound = queuesAux[0]
                     //send notification
+                    
+                    var localNotification:UILocalNotification = UILocalNotification()
+                    
+                    localNotification.alertAction = "Testing notifications on iOS8"
+                    
+                    localNotification.alertBody = "Entre na fila!"
+                    
+                    localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+                    
+                    localNotification.soundName = UILocalNotificationDefaultSoundName
+                    
+                    //   localNotification.applicationIconBadgeNumber =  localNotification.applicationIconBadgeNumber + 1
+                    
+                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                    
+                    
                 }
             })
         }
@@ -108,16 +124,29 @@ class BeaconViewController: UIViewController, CLLocationManagerDelegate {
         var record = PFQuery(className: "record")
         record.whereKey("recordId", equalTo: nextRecordIdCall)
         //get by date to ?
+        
+        
         var records = record.findObjects()
         if records?.count > 0 {
             self.lastRecord = records?.first as! PFObject
+            
+            
+            
             //@todo send push here
+            
+            //se for o prox manda o push
+            
+            
             
             //update queue
             self.queueFound["lastRecordCalled"] = nextRecordIdCall
             self.queueFound.saveInBackgroundWithBlock(nil)
             self.lblRecordCall.text = "Senha: \(nextRecordIdCall)"
         }else{
+            
+            //
+            
+            
             //send message this record is the last
         }
     }
