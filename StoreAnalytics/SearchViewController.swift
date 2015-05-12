@@ -24,13 +24,11 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     var inQueue:PFObject!
     var queueFound:PFObject!
     
-    @IBOutlet var lblBeaconFound: UILabel!
-    
     var lastRecord:PFObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.findBeacon("A3D35CE7-048E-4749-A9EB-5D651191666B") // todo just for test
         
         ticketButton.layer.cornerRadius = ticketButton.frame.size.width / 2;
         ticketButton.clipsToBounds = true;
@@ -39,98 +37,25 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func newTicket(sender: AnyObject) {
 
         var installation: AnyObject = PFInstallation.currentInstallation()["installationId"]!
-        var prox : Int = 0
-       
-        var query = PFQuery(className:"queue")
-        //println(query)
-        
-        
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-         
-            if error == nil {
-                // The find succeeded.
-                
-                println("Successfully retrieved \(objects!.count) queue.")
-
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        
-                        self.queueFound = object
-                        
-                        prox = (object["lastRecordCreated"] as! Int) + 1
-                        
-                        var record = PFObject(className: "record")
-                        
-                        record["userTokenTemp"] = installation
-                        
-                        record["recordId"] =  prox
-                            
-                        record["queue"] = object
-                        
-                        record.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
-                            
-                            if success {
-                                
-                                self.queueFound["lastRecordCreated"] = (self.queueFound["lastRecordCreated"] as! Int) + 1
-                                
-                            //    self.queueFound["lastRecordCalled"] = (self.queueFound["lastRecordCalled"] as! Int) + 1
-                              
-                                
-                                self.queueFound.saveInBackgroundWithBlock(nil)
-                                
-                               
-                               self.performSegueWithIdentifier("newTicket", sender: self.queueFound["lastRecordCreated"])
-                                
-                            }
-                            
-                        }
-                        
-                        
-                        
-                    }
-                    
-                }
-                
-            } else {
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-       /*
-        //generate code
-        var nextRecordId:Int = queue["lastRecordCreated"] as! Int + 1
+        self.inQueue = self.queueFound
+        var nextRecordId:Int = self.queueFound["lastRecordCreated"] as! Int + 1
         
         //save record with token
         var record = PFObject(className: "record")
-        record["userTokenTemp"] = "2321312321"
+        record["userTokenTemp"] = installation
         record["recordId"] = nextRecordId //pega o prox numero da fila
-    //    record["queue"] = queue
-        
-        record.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+        record["queue"] = self.queueFound
+        record.saveInBackgroundWithBlock{ (success:Bool, error:NSError?) -> Void in
             if success {
-                //update queue
-                self.inQueue["lastRecordCreated"] = nextRecordId
-                self.inQueue.saveInBackgroundWithBlock(nil)
-                //                self.lblMessage.text = "Sua senha: \(nextRecordId)"
-                self.performSegueWithIdentifier("newTicket", sender: sender)
+                self.queueFound["lastRecordCreated"] = (self.queueFound["lastRecordCreated"] as! Int) + 1
+                self.queueFound.saveInBackgroundWithBlock(nil)
+                self.performSegueWithIdentifier("newTicket", sender: nextRecordId)
             }
-        }*/
+        
+        }
 
     }
 
-
-    
-    
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
@@ -165,9 +90,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func findBeacon(UUID:String ){
-        if self.inQueue != nil && self.inQueue["UUID"] as! String != UUID {
-            self.lblBeaconFound.text = UUID
-            
+        if self.inQueue == nil || self.inQueue["UUID"] as! String != UUID {
             //check if exists
             var query = PFQuery(className: "queue")
             query.whereKey("UUID", equalTo: UUID)
@@ -207,6 +130,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
             let ticketView: TicketViewController = segue.destinationViewController as! TicketViewController
             
             ticketView.ticketNumberReceived = sender! as! Int
+            ticketView.inQueue = self.inQueue
             ticketView.admin = 0
             
         }
@@ -214,6 +138,4 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
-
 }
