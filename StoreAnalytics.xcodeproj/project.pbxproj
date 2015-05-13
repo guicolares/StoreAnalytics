@@ -489,7 +489,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5c1c6aea-9d2e-4a78-b7e7-8e4bbd76b5e8";
 			};
 			name = Debug;
 		};
@@ -506,7 +506,7 @@
 				INFOPLIST_FILE = StoreAnalytics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "408ce395-131e-4593-ab10-4c64644c87b0";
 			};
 			name = Release;
 		};

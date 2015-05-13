@@ -99,6 +99,7 @@ class TicketViewController: UIViewController {
                         println(object["userTokenTemp"]!)
                         
                         println(installation)
+                        let numTicket: AnyObject = object["recordId"]!
                         
                         let pushQuery = PFInstallation.query()
                         
@@ -108,7 +109,7 @@ class TicketViewController: UIViewController {
                         // Send push notification to query
                         let push = PFPush()
                         push.setQuery(pushQuery) // Set our Installation query
-                        push.setMessage("teste push parse")
+                        push.setMessage("Sua ficha número \(numTicket) foi chamada, dirija-se ao guichê!")
                         push.sendPushInBackground()
                     }
                    // println(objects)

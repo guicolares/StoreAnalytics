@@ -20,7 +20,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var constY: NSLayoutConstraint!
     
     @IBOutlet var lblCurrentWaiting: UILabel!
-    @IBOutlet var imageQueue: UIImageView!
     @IBOutlet var lblSearching: UILabel!
     @IBOutlet var lblDescriptionPlace: UILabel!
     var beaconsFound: [CLBeacon] = [CLBeacon]()
@@ -37,12 +36,10 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
         ticketButton.clipsToBounds = true;
         self.ticketButton.layer.opacity = 0
         self.lblDescriptionPlace.layer.opacity = 0
-        self.imageQueue.layer.opacity = 0
-        self.imageQueue.hidden = true
         self.lblCurrentWaiting.layer.opacity = 0
         self.lblCurrentWaiting.hidden = true
         
-        self.findBeacon("A3D35CE7-048E-4749-A9EB-5D651191666B")
+//        self.findBeacon("A3D35CE7-048E-4749-A9EB-5D651191666B")
     }
     
     @IBAction func newTicket(sender: AnyObject) {
@@ -133,8 +130,6 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                             self.ticketButton.layer.opacity = 1
                             self.lblDescriptionPlace.layer.opacity = 1
                             self.lblSearching.hidden = true
-                            self.imageQueue.layer.opacity = 1
-                            self.imageQueue.hidden = false
                             self.lblCurrentWaiting.hidden = false
                             self.lblCurrentWaiting.layer.opacity = 1
                             self.lblCurrentWaiting.text = "Em espera: " + String(self.getRecordsPending())
