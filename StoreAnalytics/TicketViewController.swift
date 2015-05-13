@@ -72,6 +72,11 @@ class TicketViewController: UIViewController {
 
         var query = PFQuery(className:"record").whereKey("recordId", equalTo: nextRecordCall)
         
+        var installation: AnyObject = PFInstallation.currentInstallation()["installationId"]! // cel q esta sendo usado
+        
+        //record onde o recordID seja igual ao last record called
+        
+        
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -81,14 +86,24 @@ class TicketViewController: UIViewController {
                         self.lastRecord = object
                         
                         self.inQueue["lastRecordCalled"] = (self.inQueue["lastRecordCalled"] as! Int) + 1
+                        
+                   //     var queuePush = self.inQueue["lastRecordCalled"]
+                        
+                        
+                        
                         self.inQueue.saveInBackgroundWithBlock(nil)
                         self.getCurrentTicket()
+                      
                         //send notification ??
+                        
+                        println(object["userTokenTemp"]!)
+                        
+                        println(installation)
                         
                         let pushQuery = PFInstallation.query()
                         
                         // tem que pegar o userTokenTemp e por no EQUAL TO =]
-                        pushQuery!.whereKey("installationId", equalTo: "2e94d29f-d7eb-4961-9865-e0b9c4ea8a43")
+                        pushQuery!.whereKey("installationId", equalTo:object["userTokenTemp"]!)
                         
                         // Send push notification to query
                         let push = PFPush()
@@ -96,8 +111,9 @@ class TicketViewController: UIViewController {
                         push.setMessage("teste push parse")
                         push.sendPushInBackground()
                     }
+                   // println(objects)
                 }
-                println(objects)
+                
             }
         }
     }
