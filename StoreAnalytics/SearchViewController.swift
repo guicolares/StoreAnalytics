@@ -122,7 +122,17 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 var queuesAux:NSArray? = queues as? [PFObject]
                 
                 if queuesAux!.count > 0 {
-                   //send notification ??
+                    
+                    
+                    var localNotification:UILocalNotification = UILocalNotification()
+                    localNotification.alertAction = "Testing notifications on iOS8"
+                    localNotification.alertBody = "Entre na fila!"
+                    //localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+                    localNotification.soundName = UILocalNotificationDefaultSoundName
+                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                    
+                    
+                    
                     self.queueFound = queuesAux?.firstObject as? PFObject
                     
                     var localNotification: UILocalNotification = UILocalNotification()
@@ -134,7 +144,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                         delay: 0.0,
                         options: UIViewAnimationOptions.AllowUserInteraction,
                         animations: {
-                            self.constY.constant = 80
+                            self.constY.constant = 100
                             self.ticketButton.layer.opacity = 1
                             self.lblDescriptionPlace.layer.opacity = 1
                             self.lblSearching.hidden = true

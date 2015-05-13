@@ -19,9 +19,7 @@ class LoginViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func loginAction(sender: AnyObject) {
         var query = PFQuery(className: "queue")
@@ -32,20 +30,17 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier("loginAdmin", sender: queuesAux[0])
             }
         })
-        
-        
     }
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func closeLogin(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "loginAdmin") {
             var ticketControl = segue.destinationViewController as! TicketViewController
             ticketControl.admin = 1
             ticketControl.inQueue = sender as! PFObject
-            
-            
-           
         }
     }
 }
