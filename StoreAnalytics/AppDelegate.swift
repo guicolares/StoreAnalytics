@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("Czk8Fc89mPK31utkoPI7Ws1nafBG1M9nlvb7Am9d",
             clientKey: "DIo5I1WJDwkaqJtbbKluA4pTUlUWHK8sghkAcApi")
+       
+        //
+        // MARK : PUSH
+        //
         
         // Register for Push Notitications
         if application.applicationState != UIApplicationState.Background {
@@ -41,6 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
+        
+        
+        let installation = PFInstallation.currentInstallation()
+        //installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(
+            UIApplicationBackgroundFetchIntervalMinimum)
         
         return true
     }
@@ -89,8 +102,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
     
-    
+    // Support for background fetch
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (location, error) in
+            if let theLocation = location {
+                PFQuery(className: "queue").whereKey("location", nearGeoPoint: location!, withinKilometers:1 ).findObjectsInBackgroundWithBlock { (queues, error)  in
+                    
+                    if let theQueues = queues as? [PFObject] {
+                        if theQueues.count > 0 {
+                            let name = theQueues[0]["name"] as! String
+                            let inWaiting = (theQueues[0]["lastRecordCreated"] as! Int) - (theQueues[0]["lastRecordCalled"] as! Int)
+                            
+                            var localNotification: UILocalNotification = UILocalNotification()
+                            localNotification.alertBody = "Fila \(name) encontrada \nEm espera: \(inWaiting)"
+                            localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                            completionHandler(.NewData)
+                        }else{
+                            completionHandler(.NoData)
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
 }
 
