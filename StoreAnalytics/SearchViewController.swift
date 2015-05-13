@@ -123,22 +123,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                 
                 if queuesAux!.count > 0 {
                     
-                    
-                    var localNotification:UILocalNotification = UILocalNotification()
-                    localNotification.alertAction = "Testing notifications on iOS8"
-                    localNotification.alertBody = "Entre na fila!"
-                    //localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
-                    localNotification.soundName = UILocalNotificationDefaultSoundName
-                    UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-                    
-                    
-                    
                     self.queueFound = queuesAux?.firstObject as? PFObject
-                    
-                    var localNotification: UILocalNotification = UILocalNotification()
-                    var nameStore = self.queueFound["name"] as! String
-                    self.lblCurrentWaiting.text = "Em espera: " + String(self.getRecordsPending())
-                    
                     
                     UIView.animateWithDuration(0.8,
                         delay: 0.0,
@@ -152,6 +137,7 @@ class SearchViewController: UIViewController, CLLocationManagerDelegate {
                             self.imageQueue.hidden = false
                             self.lblCurrentWaiting.hidden = false
                             self.lblCurrentWaiting.layer.opacity = 1
+                            self.lblCurrentWaiting.text = "Em espera: " + String(self.getRecordsPending())
                             
                             self.view.layoutIfNeeded()
                         }, completion: { (finished: Bool) in
