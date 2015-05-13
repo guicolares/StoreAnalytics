@@ -108,25 +108,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location, error) in
             if let theLocation = location {
                 PFQuery(className: "queue").whereKey("location", nearGeoPoint: location!, withinKilometers:1 ).findObjectsInBackgroundWithBlock { (queues, error)  in
-                 
+                    
                     if let theQueues = queues as? [PFObject] {
-                        let name = theQueues[0]["name"] as! String
-                        let inWaiting = (theQueues[0]["lastRecordCreated"] as! Int) - (theQueues[0]["lastRecordCalled"] as! Int)
+                        if theQueues.count > 0 {
+                            let name = theQueues[0]["name"] as! String
+                            let inWaiting = (theQueues[0]["lastRecordCreated"] as! Int) - (theQueues[0]["lastRecordCalled"] as! Int)
+                            
+                            var localNotification: UILocalNotification = UILocalNotification()
+                            localNotification.alertBody = "Fila \(name) encontrada \nEm espera: \(inWaiting)"
+                            localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+                            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+                            completionHandler(.NewData)
+                        }else{
+                            completionHandler(.NoData)
+                        }
                         
-                        var localNotification: UILocalNotification = UILocalNotification()
-                        localNotification.alertBody = "Fila \(name) encontrada \nEm espera: \(inWaiting)"
-                        localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
-                        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-                        completionHandler(.NewData)
                     }
                 }
             }
         }
-
-    
     }
-
-    
-    
 }
 
