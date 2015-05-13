@@ -28,7 +28,6 @@
 		BF1EEE431B00DF7C00E71F3E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EEE421B00DF7C00E71F3E /* LoginViewController.swift */; };
 		BF1EEE451B00E24E00E71F3E /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EEE441B00E24E00E71F3E /* TicketViewController.swift */; };
 		BF1EEE471B02224700E71F3E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1EEE461B02224700E71F3E /* UserDefaultsManager.swift */; };
-		BF9BD1CA1AFB9D640082B724 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */; };
 		BF9BD1CF1AFCE1850082B724 /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BD1CE1AFCE1850082B724 /* InAppViewController.swift */; };
 		F10D8AFE1AFB984100314946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10D8AFD1AFB984100314946 /* AppDelegate.swift */; };
 		F10D8B031AFB984100314946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10D8B011AFB984100314946 /* Main.storyboard */; };
@@ -69,7 +68,6 @@
 		BF1EEE421B00DF7C00E71F3E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BF1EEE441B00E24E00E71F3E /* TicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		BF1EEE461B02224700E71F3E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		BF9BD1CE1AFCE1850082B724 /* InAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		F10D8AF81AFB984100314946 /* StoreAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10D8AFC1AFB984100314946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		BF9BD1CB1AFB9DCD0082B724 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BF9BD1C91AFB9D640082B724 /* LocationViewController.swift */,
 				BF9BD1CE1AFCE1850082B724 /* InAppViewController.swift */,
 				BF1EEE401B00D86F00E71F3E /* SearchViewController.swift */,
 				BF1EEE421B00DF7C00E71F3E /* LoginViewController.swift */,
@@ -345,7 +342,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF9BD1CA1AFB9D640082B724 /* LocationViewController.swift in Sources */,
 				F10D8AFE1AFB984100314946 /* AppDelegate.swift in Sources */,
 				BF1EEE411B00D86F00E71F3E /* SearchViewController.swift in Sources */,
 				BF1EEE451B00E24E00E71F3E /* TicketViewController.swift in Sources */,
